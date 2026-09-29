@@ -28,7 +28,7 @@ pip install -r requirements.txt
 python descargar_datos.py            # baja QQQ diario de Yahoo Finance a data/QQQ_D1.csv
 python descargar_datos.py --norgate  # o de Norgate (retorno total), la fuente de las cifras de la guía
 python motor/rsi2_motor.py         # corre las 5 fases + extras → resultados/ (JSON, trades, gráficos)
-python motor/construir_html.py     # construye las dos páginas de guia/
+python motor/construir_html.py     # comprueba los resultados (motor/test_resultados.py) y construye las dos páginas de guia/
 ```
 
 El motor acepta cualquier CSV diario con columnas `Date,Open,High,Low,Close`:
@@ -53,6 +53,7 @@ python motor/rsi2_motor.py --csv mis_datos.csv --etiqueta NDX --solo-metricas
 ├── guia/                        Las dos páginas HTML (empieza aquí) + logo
 ├── motor/
 │   ├── rsi2_motor.py            Backtest, 5 fases, monkey test, edge decay, drawdowns, gráficos
+│   ├── test_resultados.py       Pruebas de coherencia de resultados/ (bloquean la construcción si fallan)
 │   └── construir_html.py        Genera guia/*.html a partir de resultados/
 ├── codigo/
 │   └── TIS_RSI2_MeanReversion.mq5   Robot para MetaTrader 5 (v2.01, el que opera en real)
